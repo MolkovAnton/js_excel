@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Excel!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="image/x-icon" rel="shortcut icon" href="src/favicon.ico">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <div class="excel">
+                <div class="excell__header">
+                    <input type="text" class="input" value="Новая таблица" />
+                    <div>
+                        <div class="button">
+                            <i class="material-icons">delete</i>
+                        </div>
+                        <div class="button">
+                            <i class="material-icons">exit_to_app</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="excell__toolbar">
+                    <div class="button">
+                        <i class="material-icons">format_align_left</i>
+                    </div>
+                    <div class="button">
+                        <i class="material-icons">format_align_center</i>
+                    </div>
+                    <div class="button">
+                        <i class="material-icons">format_align_right</i>
+                    </div>
+                    <div class="button">
+                        <i class="material-icons">format_bold</i>
+                    </div>
+                    <div class="button">
+                        <i class="material-icons">format_italic</i>
+                    </div>
+                    <div class="button">
+                        <i class="material-icons">format_underline</i>
+                    </div>
+                </div>
+                <div class="excell__formula">
+                    <div class="info">fx</div>
+                    <div class="input" contenteditable spellcheck="false"></div>
+                </div>
+                <div class="excell__table">
+                    <div class="row">
+                        <div class="row__info"></div>
+                        <div class="row__data">
+                            <div class="row__column">A</div>
+                            <div class="row__column">B</div>
+                            <div class="row__column">C</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row__info">1</div>
+                        <div class="row__data">
+                            <div class="row__cell selected" contenteditable>A</div>
+                            <div class="row__cell">B</div>
+                            <div class="row__cell">C</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
