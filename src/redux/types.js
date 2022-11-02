@@ -1,0 +1,3 @@
+export const TABLE_RESIZE = 'TABLE_RESIZE';
+export const CELL_CHANGE = 'CELL_CHANGE';
+export const LIST_NAME_CHANGE = 'LIST_NAME_CHANGE';
