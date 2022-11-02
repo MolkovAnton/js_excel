@@ -90,4 +90,22 @@
             cursor: col-resize;
         }
     }
+    .format_align_left {
+        justify-content: flex-start;
+    }
+    .format_align_center {
+        justify-content: center;
+    }
+    .format_align_right {
+        justify-content: flex-end;
+    }
+    .format_bold {
+        font-weight: 600;
+    }
+    .format_italic {
+        font-style: italic;
+    }
+    .format_underline {
+        text-decoration: underline;
+    }
 }

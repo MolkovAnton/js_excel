@@ -38,16 +38,70 @@ class Dom {
             this.$element.style[style] = styles[style];
         });
     }
+    find(selector) {
+        return this.$element.querySelector(selector);
+    }
+    findAll(selector) {
+        return this.$element.querySelectorAll(selector);
+    }
+    data(name) {
+        return this.$element.dataset[name];
+    }
+    text(text) {
+        if (typeof text === 'string') {
+           this.$element.textContent = text; 
+           return this;
+        } else {
+            if (this.$element.tagName.toLowerCase() === 'input') {
+                return this.$element.value.trim();
+            }
+            return this.$element.innerText;
+        }
+    }
+    addClass(className) {
+        this.$element.classList.add(className);
+    }
+    removeClass(className) {
+        this.$element.classList.remove(className);
+    }
+    toggleClass(className) {
+        this.$element.classList.toggle(className);
+    }
+    focus() {
+        this.$element.focus();
+    }
+    getStyles(search = []) {
+        let styles = [];
+        if (search.length === 0) {
+            this.$element.classList.forEach(style => {
+                styles.push(style);
+            });
+        } else {
+            search.forEach(style => {
+                if (this.$element.classList.contains(style)) {
+                    styles.push(style);
+                }
+            });
+        }
+        
+        return styles;
+    }
 }
 
 export function $(selector) {
-    return new Dom(selector);
+    return selector instanceof Dom ? selector : new Dom(selector);
 }
 
-$.create = (tag, classes = '') => {
+$.create = (tag, classes = '', params = {}) => {
     const element = document.createElement(tag);
+    
     if (classes) {
         element.classList.add(classes);
     }
+    
+    for (let key of Object.keys(params)) {
+        element[key] = params[key];
+    }
+    
     return $(element);
 }

@@ -7,12 +7,15 @@ function toChar(i) {
 }
 function createCell(content = '', column = '', row = '') {
     return `
-        <div class="row__cell" contenteditable data-column="${column}" data-row="${row}">${content}</div>
+        <div class="row__cell" contenteditable data-column="${column}" data-row="${row}" 
+        data-event_mousedown="selectCell" data-event_mouseup="selectCellGroup" data-event_keydown="navigateCell" data-event_keyup="cellChange">
+            ${content}
+        </div>
     `;
 }
-function createColumn(content = '') {
+function createColumn(content = '', i) {
     return `
-        <div class="row__column" data-type="resizeble" data-column="${content}">
+        <div class="row__column" data-type="resizeble" data-column="${i}">
             ${content}
             <div class="colum-resize" data-event_mousedown="columnResize"></div>
         </div>
@@ -23,14 +26,14 @@ function createRow(number = '') {
     const columns = [];
     for (let i = 0; i <= columnsCount; i++) {
         if (number) {
-            columns.push(createCell('', toChar(i), number));
+            columns.push(createCell('', i+1, number));
         } else {
-            columns.push(createColumn(toChar(i)));
+            columns.push(createColumn(toChar(i), i+1));
         }
     }
     const resizer = number ? `<div class="row-resize" data-event_mousedown="rowResize"></div>` : '';
     return `
-        <div class="row" data-type="resizeble">
+        <div class="row" data-type="resizeble" data-row="${number}">
             <div class="row__info">${number}${resizer}</div>
             <div class="row__data">${columns.join('')}</div>
         </div>
